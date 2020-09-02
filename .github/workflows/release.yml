@@ -18,7 +18,7 @@ jobs:
       - name: Set env
         run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/}
       - name: Announce Product release 
-        uses: singhkshitij/announcerr@v1.0.2
+        uses: singhkshitij/announcerr@v2.0
         with:
           server_address: smtp.gmail.com
           server_port: 465
