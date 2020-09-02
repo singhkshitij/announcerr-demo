@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Set env
+        run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/}
       - name: Announce Product release 
         uses: singhkshitij/announcerr@v1.0.2
         with:
@@ -22,7 +24,7 @@ jobs:
           server_port: 465
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          subject: Launching my awesomeProduct version ${{ github.event.release.tag_name }}
+          subject: Launching my awesomeProduct version ${{ env.RELEASE_VERSION }}
           body: "file://demo-page.html" #Just launched new version of my ${{github.repository}}
           to: ${{secrets.USER_EMAILS}}
           from: Kshitij Singh # <kshitij@mytrashcode.com>
