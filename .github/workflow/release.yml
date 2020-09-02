@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Announcerr-demo
+
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Announce Product release 
+        uses: singhkshitij/announcerr@v1.0.0
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Launching my awesomeProduct version ${{ github.event.release.tag_name }}
+          # Literal body:
+          body: Just launched new version of my ${{github.repository}} ! It is fully packed with awesome features.
+          to: user1@xyz.com,user2@abc.com
+          from: Kshitij Singh # <kshitij@mytrashcode.com>
+          # Optional content type (defaults to text/plain):
+          content_type: text/html
+          # Optional attachments:
+          attachments: attachments.zip,git.diff,./dist/static/main.js
