@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Announce Product release 
-        uses: singhkshitij/announcerr@v1.0.1
+        uses: singhkshitij/announcerr@v1.0.2
         with:
           server_address: smtp.gmail.com
           server_port: 465
