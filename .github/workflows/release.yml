@@ -23,7 +23,7 @@ jobs:
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Launching my awesomeProduct version ${{ github.event.release.tag_name }}
-          body: Just launched new version of my ${{github.repository}} ! It is fully packed with awesome features.
+          body: "file://demo-page.html" #Just launched new version of my ${{github.repository}}
           to: ${{secrets.USER_EMAILS}}
           from: Kshitij Singh # <kshitij@mytrashcode.com>
           content_type: text/html
