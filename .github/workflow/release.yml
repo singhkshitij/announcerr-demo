@@ -25,7 +25,7 @@ jobs:
           subject: Launching my awesomeProduct version ${{ github.event.release.tag_name }}
           # Literal body:
           body: Just launched new version of my ${{github.repository}} ! It is fully packed with awesome features.
-          to: user1@xyz.com,user2@abc.com
+          to: ${{secrets.USER_EMAILS}}
           from: Kshitij Singh # <kshitij@mytrashcode.com>
           # Optional content type (defaults to text/plain):
           content_type: text/html
